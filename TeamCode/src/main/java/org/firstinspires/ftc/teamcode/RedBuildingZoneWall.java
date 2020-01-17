@@ -30,7 +30,9 @@
 package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -48,9 +50,10 @@ import com.qualcomm.robotcore.util.ElapsedTime;
  * Use Android Studios to Copy this Class, and Paste it into your team's code folder with a new name.
  * Remove or comment out the @Disabled line to add this opmode to the Driver Station OpMode list
  */
-@Autonomous(name="Blue Building Zone Bridge", group="Linear Opmode")
+@Disabled
+@Autonomous(name="Red Side Build Zone", group="Linear Opmode")
 
-public class BlueBuildingZoneBridge extends LinearOpMode {
+public class RedBuildingZoneWall extends LinearOpMode {
 
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
@@ -61,6 +64,7 @@ public class BlueBuildingZoneBridge extends LinearOpMode {
     //declare servos
     private Servo foundationLeft = null;
     private Servo foundationRight = null;
+    private CRServo wrist = null;
 
     static final double     COUNTS_PER_MOTOR_REV    = 1440 ;    // eg: TETRIX Motor Encoder
     static final double     DRIVE_GEAR_REDUCTION    = 0.4 ;     // This is < 1.0 if geared UP
@@ -86,6 +90,7 @@ public class BlueBuildingZoneBridge extends LinearOpMode {
 
         foundationLeft = hardwareMap.get(Servo.class, "foundationLeft");
         foundationRight = hardwareMap.get(Servo.class, "foundationRight");
+        wrist = hardwareMap.get(CRServo.class, "wrist");
 
 
         //grabber = hardwareMap.get(Servo.class, "grabber");
@@ -142,10 +147,10 @@ public class BlueBuildingZoneBridge extends LinearOpMode {
             left2.setPower(0);
             sleep(1000);
             //strafing to position
-            left1.setPower(1);
-            right1.setPower(-1);
-            left2.setPower(-1);
-            right2.setPower(1);
+            left1.setPower(-1);
+            right1.setPower(1);
+            left2.setPower(1);
+            right2.setPower(-1);
             sleep(300);
             //waits
             left1.setPower(0);
@@ -164,10 +169,10 @@ public class BlueBuildingZoneBridge extends LinearOpMode {
             left2.setPower(-.5);
             sleep(1500);
             //turn towards the side wall
-            left1.setPower(.5);
-            right1.setPower(-1);
-            right2.setPower(-1);
-            left2.setPower(.5);
+            left1.setPower(-1);
+            right1.setPower(.5);
+            right2.setPower(.5);
+            left2.setPower(-1);
             sleep(2500);
             //pause for 2.5 seconds
             left1.setPower(0);
@@ -191,12 +196,12 @@ public class BlueBuildingZoneBridge extends LinearOpMode {
             right2.setPower(0);
             left2.setPower(0);
             sleep(500);
-            //strafing until the robot is close to the side of the skybridge
+            //strafing to align with wall
             left1.setPower(-1);
             right1.setPower(1);
             left2.setPower(1);
             right2.setPower(-1);
-            sleep(500);
+            sleep(300);
             //Moves in reverse under the bridge
             left1.setPower(-1);
             right1.setPower(-1);

@@ -118,39 +118,31 @@ public class BlueBuildingZoneWall extends LinearOpMode {
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         runtime.reset();
-
-        // run until the end of the match (driver presses STOP)
-            // Send calculated power to wheels
-
-
             // Wait for the game to start (driver presses PLAY)
             waitForStart();
+            //Gets servos in position
             foundationLeft.setPosition(.4);
             foundationRight.setPosition(1);
             sleep(500);
-            // Step through each leg of the path,
-            // Note: Reverse movement is obtained by setting a negative distance (not speed)
-
-
-            //forward close to building zone
+            //forward close to foundation
             left1.setPower(1);
             right1.setPower(1);
             right2.setPower(1);
             left2.setPower(1);
             sleep(1000);
             //stops motors
-        left1.setPower(0);
-        right1.setPower(0);
-        right2.setPower(0);
-        left2.setPower(0);
-        sleep(1000);
+            left1.setPower(0);
+            right1.setPower(0);
+            right2.setPower(0);
+            left2.setPower(0);
+            sleep(1000);
             //strafing to position
             left1.setPower(1);
             right1.setPower(-1);
             left2.setPower(-1);
             right2.setPower(1);
             sleep(300);
-            //waits 2.5 seconds
+            //waits
             left1.setPower(0);
             right1.setPower(0);
             right2.setPower(0);
@@ -160,50 +152,52 @@ public class BlueBuildingZoneWall extends LinearOpMode {
             foundationLeft.setPosition(.9);
             foundationRight.setPosition(.3);
             sleep(2500);
-        left1.setPower(-.5);
-        right1.setPower(-.5);
-        right2.setPower(-.5);
-        left2.setPower(-.5);
-        sleep(1500);
-            //turn towards wall
+            //Drives back to the wall
+            left1.setPower(-.5);
+            right1.setPower(-.5);
+            right2.setPower(-.5);
+            left2.setPower(-.5);
+            sleep(1500);
+            //turn towards the side wall
             left1.setPower(.5);
             right1.setPower(-1);
             right2.setPower(-1);
             left2.setPower(.5);
             sleep(2500);
-            //pause for 2.5 seconds
+            //pauses
             left1.setPower(0);
             right1.setPower(0);
             right2.setPower(0);
             left2.setPower(0);
-            sleep(2500);
-        //forward against wall
-        left1.setPower(.25);
-        right1.setPower(.25);
-        right2.setPower(.25);
-        left2.setPower(.25);
-        sleep(250);
-            //servo come up
+            sleep(1000);
+            //Aligns foundation with wall
+            left1.setPower(.25);
+            right1.setPower(.25);
+            right2.setPower(.25);
+            left2.setPower(.25);
+            sleep(250);
+            //servos come up to release foundation
             foundationLeft.setPosition(0);
             foundationRight.setPosition(-.3);
             sleep(1000);
-        left1.setPower(0);
-        right1.setPower(0);
-        right2.setPower(0);
-        left2.setPower(0);
-        sleep(500);
-        //strafing to position
-        left1.setPower(1);
-        right1.setPower(-1);
-        left2.setPower(-1);
-        right2.setPower(1);
-        sleep(300);
-            //back to bridge
-        left1.setPower(-1);
-        right1.setPower(-1);
-        left2.setPower(-1);
-        right2.setPower(-1);
-        sleep(1200);
+            //Pauses motors
+            left1.setPower(0);
+            right1.setPower(0);
+            right2.setPower(0);
+            left2.setPower(0);
+            sleep(500);
+            //strafing to align with wall
+            left1.setPower(1);
+            right1.setPower(-1);
+            left2.setPower(-1);
+            right2.setPower(1);
+            sleep(300);
+            //Goes in reverse back to bridge
+            left1.setPower(-1);
+            right1.setPower(-1);
+            left2.setPower(-1);
+            right2.setPower(-1);
+            sleep(1200);
 
 
             //use the arm for placing block

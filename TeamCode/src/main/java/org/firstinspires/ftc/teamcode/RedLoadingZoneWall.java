@@ -125,19 +125,13 @@ public class RedLoadingZoneWall extends LinearOpMode {
 
             // Wait for the game to start (driver presses PLAY)
             waitForStart();
-            // Step through each leg of the path,
-            // Note: Reverse movement is obtained by setting a negative distance (not speed)
+                //strafing under the bridge
+                left1.setPower(-1);
+                right1.setPower(1);
+                left2.setPower(1);
+                right2.setPower(-1);
+                sleep(300);
 
-            //forward close to building zone
-        //strafing to position
-        left1.setPower(-1);
-        right1.setPower(1);
-        left2.setPower(1);
-        right2.setPower(-1);
-        sleep(300);
-
-
-            //use the arm for placing block
 
         telemetry.addData("Path", "Complete");
             telemetry.update();

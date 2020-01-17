@@ -106,19 +106,21 @@ public class Charge11171_TeleOp extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
 
+            /*
+            This part of the program is the part that controls what each button
+            on the controller does. The joysticks will be configured to a
+            tank drive setup.
+             */
+
             // Setup a variable for each drive wheel to save power level for telemetry
             double leftPower;
             double rightPower;
 
-
-            double drive = -gamepad1.left_stick_y;
-            double turn  =  gamepad1.right_stick_x;
-            leftPower    = Range.clip(drive + turn, -1, 1) ;
-            rightPower   = Range.clip(drive - turn, -1, 1) ;
-
+            //Sets the joysticks on the controller to drive the robot
             leftPower = gamepad1.left_stick_y;
             rightPower = gamepad1.right_stick_y;
 
+            //Sets the power of each drive motor
             left1.setPower(leftPower);
             right1.setPower(rightPower);
             left2.setPower(leftPower);
@@ -130,7 +132,7 @@ public class Charge11171_TeleOp extends LinearOpMode {
             leftPower  = gamepad1.left_stick_y ;
             rightPower = gamepad1.right_stick_y ;
 
-
+            //When the right bumper on controller 1 is pressed the robot will strafe to the right
             while (gamepad1.right_bumper)
             {
                 left1.setPower(1);
@@ -138,6 +140,7 @@ public class Charge11171_TeleOp extends LinearOpMode {
                 right1.setPower(-1);
                 right2.setPower(1);
             }
+            //When the left bumper on controller 1 is pressed the robot will strafe to the left
             while (gamepad1.left_bumper)
             {
                 left1.setPower(-1);
@@ -145,41 +148,49 @@ public class Charge11171_TeleOp extends LinearOpMode {
                 right1.setPower(1);
                 right2.setPower(-1);
             }
+            //When the down button on the dpad is pressed on controller 2 the lift mechanism will go down
             if (gamepad2.dpad_down)
             {
                 lift1.setPower(1);
                 lift2.setPower(-1);
             }
+            //When the up button on the dpad is pressed on controller 2 the lift mechanism will go up
             else if (gamepad2.dpad_up)
             {
                 lift1.setPower(-1);
                 lift2.setPower(-1);
             }
+            //When there is nothing being pushed the mechanism will not do anything
             else
             {
                 lift1.setPower(0);
                 lift2.setPower(0);
             }
+            //When the a button is pressed on controller 1, the foundation servos will drop
             if (gamepad1.a)
             {
                 foundationLeft.setPosition(.9);
                 foundationRight.setPosition(.3);
             }
+            //When the b button is pressed on controller 1, the foundation servos will go back up
             else if (gamepad1.b)
             {
                 foundationLeft.setPosition(0);
                 foundationRight.setPosition(-.3);
             }
+            //When the a button is pressed on controller 2, the grabber mechanism will grab the blocks
             if (gamepad2.a)
             {
                hand1.setPosition(1);
                hand2.setPosition(0);
             }
+            //when the b button is pressed on controller 2, the grabber mechanism will release the blocks
             else if (gamepad2.b)
             {
                 hand1.setPosition(0);
                 hand2.setPosition(1);
             }
+            //While the down button on the dpad is pressed on gamepad 1, the robot will slowly move backwards
             while (gamepad1.dpad_down)
             {
                 left1.setPower(0.2);
@@ -188,6 +199,7 @@ public class Charge11171_TeleOp extends LinearOpMode {
                 right2.setPower(0.2);
 
             }
+            //While the up button on the dpad is pressed on gamepad 1, the robot will slowly move forward
             while (gamepad1.dpad_up)
             {
                 left1.setPower(-0.2);
@@ -196,6 +208,7 @@ public class Charge11171_TeleOp extends LinearOpMode {
                 right2.setPower(-0.2);
 
             }
+            //While the right button on the dpad is pressed on gamepad 1, the robot will slowly strafe to the right
             while (gamepad1.dpad_right)
             {
                 left1.setPower(0.2);
@@ -204,6 +217,7 @@ public class Charge11171_TeleOp extends LinearOpMode {
                 right2.setPower(0.2);
 
             }
+            //While the left button on the dpad is pressed on gamepad 1, the robot will slowly strafe to the left
             while (gamepad1.dpad_left)
             {
                 left1.setPower(-0.2);
